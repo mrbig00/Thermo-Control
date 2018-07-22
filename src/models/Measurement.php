@@ -7,6 +7,8 @@
 namespace app\models;
 
 use app\models\query\MeasurementQuery;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * Class Measurement
@@ -15,6 +17,14 @@ use app\models\query\MeasurementQuery;
  */
 class Measurement extends \app\models\base\Measurement
 {
+    public function behaviors()
+    {
+
+        return [
+            TimestampBehavior::class,
+            BlameableBehavior::class,
+        ];
+    }
 
     /**
      * @return \yii\db\ActiveQuery
