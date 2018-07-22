@@ -2,7 +2,6 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-
 $config = [
     'id'          => 'thermo-control',
     'basePath'    => dirname(__DIR__) . '/src',
@@ -45,7 +44,12 @@ $config = [
     ],
     'modules'     => [
         'user' => [
-            'class' => Da\User\Module::class,
+            'class'         => Da\User\Module::class,
+            'viewPath'      => '@app/views/user',
+            'controllerMap' => [
+                'security'     => 'app\controllers\user\SecurityController',
+                'registration' => 'app\controllers\user\RegistrationController',
+            ],
         ],
     ],
     'params'      => $params,

@@ -2,13 +2,9 @@
 
 namespace app\controllers;
 
-use Yii;
-use yii\filters\AccessControl;
+use app\services\MeasurementService;
 use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\Measurement;
 
 class SiteController extends Controller
 {
@@ -19,7 +15,8 @@ class SiteController extends Controller
     {
         return [
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class'  => 'yii\web\ErrorAction',
+                'layout' => 'main-login',
             ],
         ];
     }
@@ -31,6 +28,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $measurementService = new MeasurementService();
+        $measurementService->measure();
+        $measurementService->store();
         return $this->render('index');
     }
 }

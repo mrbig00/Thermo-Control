@@ -1,79 +1,63 @@
 <?php
+/**
+ * @author  Zoltan Szanto <mrbig00@gmail.com>
+ * @since   2018/07/22
+ *
+ * @var $this    \yii\web\View
+ * @var $content string
+ */
 
-/* @var $this \yii\web\View */
-/* @var $content string */
-
-use app\widgets\Alert;
+use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
 
-AppAsset::register($this);
+app\assets\AppAsset::register($this);
+dmstr\web\AdminLteAsset::register($this);
+$directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->registerCsrfMetaTags() ?>
+    <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="<?= Url::to('/img/favicon/apple-touch-icon.png?v=Gvk4ajbyL5') ?>">
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="<?= Url::to('/img/favicon/favicon-32x32.png?v=Gvk4ajbyL5') ?>">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="<?= Url::to('/img/favicon/favicon-16x16.png?v=Gvk4ajbyL5') ?>">
+    <link rel="manifest" href="<?= Url::to('/img/favicon/site.webmanifest?v=Gvk4ajbyL5') ?>">
+    <link rel="mask-icon" href="<?= Url::to('/img/favicon/safari-pinned-tab.svg?v=Gvk4ajbyL5') ?>" color="#5bbad5">
+    <link rel="shortcut icon" href="<?= Url::to('') ?>/img/favicon/favicon.ico?v=Gvk4ajbyL5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="<?= Url::to('/img/favicon/mstile-144x144.png?v=Gvk4ajbyL5') ?>">
+    <meta name="msapplication-config" content="<?= Url::to('/img/favicon/browserconfig.xml?v=Gvk4ajbyL5') ?>">
+    <meta name="theme-color" content="#ffffff">
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
 <?php $this->beginBody() ?>
+<div class="wrapper">
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
+    <?= $this->render(
+        'header.php',
+        ['directoryAsset' => $directoryAsset]
+    ) ?>
+
+    <?= $this->render(
+        'left.php',
+        ['directoryAsset' => $directoryAsset]
+    )
     ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
+    <?= $this->render(
+        'content.php',
+        ['content' => $content, 'directoryAsset' => $directoryAsset]
+    ) ?>
+
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
 
 <?php $this->endBody() ?>
 </body>

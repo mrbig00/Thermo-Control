@@ -4,19 +4,21 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id'                  => 'basic-console',
-    'basePath'            => dirname(__DIR__),
-    'bootstrap'           => ['log'],
+    'id'                  => 'thermo-control-console',
+    'basePath'            => dirname(__DIR__) . '/src',
+    'runtimePath'         => dirname(__DIR__) . '/runtime',
+    'vendorPath'          => dirname(__DIR__) . '/vendor',
     'controllerNamespace' => 'app\commands',
+    'bootstrap'           => ['log'],
     'controllerMap'       => [
         'migrate' => [
             'class'               => \yii\console\controllers\MigrateController::class,
             'migrationPath'       => [
-                '@app/migrations',
                 '@yii/rbac/migrations',
             ],
             'migrationNamespaces' => [
                 'Da\User\Migration',
+                'app\migrations',
             ],
         ],
     ],
@@ -43,7 +45,7 @@ $config = [
     ],
     'params'              => $params,
     'modules'             => [
-        'user' => Da\User\Module::class,
+        'class' => 'Da\User\Module',
     ],
 ];
 
