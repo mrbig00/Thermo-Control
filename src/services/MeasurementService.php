@@ -82,4 +82,13 @@ class MeasurementService extends BaseObject
     {
         return $this->measurement;
     }
+
+    public static function measureAndStore()
+    {
+        $measurementService = new static();
+        $measurementService->measure();
+        $measurementService->store();
+
+        return $measurementService->getMeasurement();
+    }
 }
