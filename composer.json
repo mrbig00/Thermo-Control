@@ -18,7 +18,8 @@
     "yiisoft/yii2-bootstrap": "2.0.8",
     "dmstr/yii2-adminlte-asset": "2.6.1",
     "yiisoft/yii2-httpclient": "^2.0@dev",
-    "cmfcmf/openweathermap-php-api": "dev-master"
+    "cmfcmf/openweathermap-php-api": "dev-master",
+    "yiisoft/yii2-swiftmailer": "^2.1@dev"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.0.0",

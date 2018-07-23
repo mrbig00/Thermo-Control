@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9bea2affd22f29b3d13fc56b3c4ac9a1",
+    "content-hash": "c334b90e3156b5e5225484cbddf71bcb",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -1724,7 +1724,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "yiisoft/yii2-httpclient": 20,
-        "cmfcmf/openweathermap-php-api": 20
+        "cmfcmf/openweathermap-php-api": 20,
+        "yiisoft/yii2-swiftmailer": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

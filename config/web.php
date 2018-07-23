@@ -4,6 +4,7 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $config = [
     'id'          => 'thermo-control',
+    'name'        => 'Thermo Control',
     'basePath'    => dirname(__DIR__) . '/src',
     'runtimePath' => dirname(__DIR__) . '/runtime',
     'vendorPath'  => dirname(__DIR__) . '/vendor',
@@ -40,6 +41,10 @@ $config = [
             'showScriptName'  => false,
             'rules'           => [
             ],
+        ],
+        'mailer'       => [
+            'class'            => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => true,
         ],
     ],
     'modules'     => [
