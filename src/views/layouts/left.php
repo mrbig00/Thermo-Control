@@ -1,9 +1,18 @@
+<?php
+/**
+ * @author  Zoltan Szanto <mrbig00@gmail.com>
+ * @since   2018/07/22
+ *
+ * @var $this    \yii\web\View
+ * @var $content string
+ */
+?>
 <aside class="main-sidebar">
     <section class="sidebar">
         <?php if (!\Yii::$app->user->isGuest): ?>
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                    <img src="<?= \Yii::$app->user->identity->getAvatarUrl() ?>" class="img-circle" alt="User Image"/>
                 </div>
                 <div class="pull-left info">
                     <p><?= \Yii::$app->user->identity->email ?></p>
