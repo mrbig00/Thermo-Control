@@ -40,34 +40,13 @@ class MeasurementService extends BaseObject
 
     protected function measureRoom()
     {
-        $client = new Client();
-        $response = $client->createRequest()
-            ->setMethod('GET')
-            ->setUrl($this->sensorApiEndpoint)
-            ->send();
-        if ($response->isOk) {
-            $this->measurement->room_lux = $response->data['lux'];
-            $this->measurement->room_air_pressure = $response->data['pressure'];
-            $this->measurement->room_temperature = $response->data['temperature'];
-            $this->measurement->room_humidity = $response->data['humidity'];
-        }
-        unset($client);
+        $this->measurement->setAttributes($this->getRoomData());
     }
 
     protected function measureWorld()
     {
-        $owm = new OpenWeatherMap(\Yii::$app->params['open_weather_map_api_key']);
-
         try {
-            $weather = $owm->getWeather(
-                \Yii::$app->params['sensor_location']['city'],
-                'metric',
-                \Yii::$app->language
-            );
-            $this->measurement->outside_temperature = $weather->temperature->now->getValue();
-            $this->measurement->outside_air_pressure = $weather->pressure->getValue();
-            $this->measurement->outside_humidity = $weather->humidity->getValue();
-            $this->measurement->outside_wind_speed = $weather->wind->speed->getValue();
+            $this->measurement->setAttributes($this->getWorldData());
         } catch (\Exception $e) {
             echo 'General exception: ' . $e->getMessage() . ' (Code ' . $e->getCode() . ').';
         }
@@ -90,5 +69,57 @@ class MeasurementService extends BaseObject
         $measurementService->store();
 
         return $measurementService->getMeasurement();
+    }
+
+    protected function getWorldData()
+    {
+        $data = \Yii::$app->cache->getOrSet(
+            self::class . "_worldDataCache",
+            function () {
+                $owm = new OpenWeatherMap(\Yii::$app->params['open_weather_map_api_key']);
+                $weather = $owm->getWeather(
+                    \Yii::$app->params['sensor_location']['city'],
+                    'metric',
+                    \Yii::$app->language
+                );
+
+                return [
+                    'outside_temperature'  => $weather->temperature->now->getValue(),
+                    'outside_air_pressure' => $weather->pressure->getValue(),
+                    'outside_humidity'     => $weather->humidity->getValue(),
+                    'outside_wind_speed'   => $weather->wind->speed->getValue(),
+                ];
+            },
+            3
+        );
+
+        return $data;
+    }
+
+    protected function getRoomData()
+    {
+        $data = \Yii::$app->cache->getOrSet(
+            self::class . "_roomDataCache",
+            function () {
+                $client = new Client();
+                $response = $client->createRequest()
+                    ->setMethod('GET')
+                    ->setUrl($this->sensorApiEndpoint)
+                    ->send();
+                if ($response->isOk) {
+                    return [
+                        'room_lux'          => $response->data['lux'],
+                        'room_air_pressure' => $response->data['pressure'],
+                        'room_temperature'  => $response->data['temperature'],
+                        'room_humidity'     => $response->data['humidity'],
+                    ];
+                } else {
+                    throw new \Exception("Error during getting room data");
+                }
+            },
+            3
+        );
+
+        return $data;
     }
 }
