@@ -18,7 +18,16 @@ use app\models\Measurement;
  */
 class MeasurementService extends BaseObject
 {
+    /**
+     * @var int Cache duration in seconds
+     */
+    protected $cacheDuration = 10;
+
+    /**
+     * @var string $sensorApiEndpoint sensor api endpoint
+     */
     public $sensorApiEndpoint;
+
     /**
      * @var Measurement $measurement
      */
@@ -90,7 +99,7 @@ class MeasurementService extends BaseObject
                     'outside_wind_speed'   => $weather->wind->speed->getValue(),
                 ];
             },
-            3
+            $this->cacheDuration
         );
 
         return $data;
@@ -117,7 +126,7 @@ class MeasurementService extends BaseObject
                     throw new \Exception("Error during getting room data");
                 }
             },
-            3
+            $this->cacheDuration
         );
 
         return $data;
