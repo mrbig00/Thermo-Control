@@ -117,7 +117,7 @@ class MeasurementService extends BaseObject
                     'outside_wind_speed'   => $weather->wind->speed->getValue(),
                 ];
             },
-            $this->cacheDuration
+            54000
         );
 
         return $data;
