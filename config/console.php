@@ -45,7 +45,9 @@ $config = [
     ],
     'params'              => $params,
     'modules'             => [
-        'class' => 'Da\User\Module',
+        'user' => [
+            'class' => Da\User\Module::class,
+        ],
     ],
 ];
 
