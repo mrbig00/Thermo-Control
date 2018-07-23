@@ -7,6 +7,7 @@
 namespace app\controllers;
 
 use app\dictionaries\Role;
+use app\services\MeasurementService;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 
@@ -53,6 +54,6 @@ class SiteController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index', ['measurement' => MeasurementService::measureOnly()]);
     }
 }
