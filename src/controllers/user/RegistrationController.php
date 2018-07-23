@@ -11,19 +11,19 @@ class RegistrationController extends \Da\User\Controller\RegistrationController
 {
     public function actionRegister()
     {
-        $this->layout = '/main-login';
+        $this->layout = '/main-simple';
         return parent::actionRegister();
     }
 
     public function actionResend()
     {
-        $this->layout = '/main-login';
+        $this->layout = '/main-simple';
         return parent::actionResend();
     }
 
     public function actionConnect($code)
     {
-        $this->layout = '/main-login';
+        $this->layout = '/main-simple';
         return parent::actionConnect($code);
     }
 }

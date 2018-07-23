@@ -15,7 +15,7 @@ class SecurityController extends \Da\User\Controller\SecurityController
 {
     public function actionLogin()
     {
-        $this->layout = '/main-login';
+        $this->layout = '/main-simple';
         return parent::actionLogin();
     }
 }

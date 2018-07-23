@@ -16,7 +16,7 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class'  => 'yii\web\ErrorAction',
-                'layout' => 'main-login',
+                'layout' => 'main-simple',
             ],
         ];
     }
