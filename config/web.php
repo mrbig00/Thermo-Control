@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id'          => 'thermo-control',
     'name'        => 'Thermo Control',
+    'timezone'    => 'Europe/Bucharest',
     'basePath'    => dirname(__DIR__) . '/src',
     'runtimePath' => dirname(__DIR__) . '/runtime/web',
     'vendorPath'  => dirname(__DIR__) . '/vendor',
