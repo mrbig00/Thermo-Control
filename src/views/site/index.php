@@ -3,158 +3,139 @@
  * @author  Zoltan Szanto <mrbig00@gmail.com>
  * @since   2018/07/22
  *
- * @var $this        yii\web\View
- * @var $measurement \app\models\Measurement
+ * @var $this               yii\web\View
+ * @var $measurement        \app\models\Measurement
+ * @var $lastDayCollection  \app\services\ChartsJsService
  */
 
-use rmrevin\yii\fontawesome\FA;
+use dosamigos\chartjs\ChartJs;
 
 $this->title = \Yii::t('app', 'Dashboard');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-blue">
-            <span class="info-box-icon">
-                <?= FA::i(FA::_THERMOMETER) ?>
-            </span>
+<?= $this->render('_outside', ['measurement' => $measurement]); ?>
+<?= $this->render('_room', ['measurement' => $measurement]); ?>
 
-            <div class="info-box-content">
-                <span class="info-box-text"><?= \Yii::t('app', 'Outside temperature') ?></span>
-                <span class="info-box-number">
-                    <?= $measurement->outside_temperature ?>
-                    <sup>
-                        &#8451;
-                    </sup>
-                </span>
+<div class="row" style="height: 200px">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="chart">
+                    <?= ChartJs::widget([
+                        'type'    => 'line',
+                        'options' => [
+                            'height' => 400,
+                        ],
+                        'data'    => [
+                            'labels'   => $lastDayCollection->getLabels(),
+                            'datasets' => [
+                                [
+                                    'label'                     => \Yii::t('app', 'Room temperature'),
+                                    'backgroundColor'           => "rgba(179,181,198,0.2)",
+                                    'borderColor'               => "rgba(179,181,198,1)",
+                                    'pointBackgroundColor'      => "rgba(179,181,198,1)",
+                                    'pointBorderColor'          => "#fff",
+                                    'pointHoverBackgroundColor' => "#fff",
+                                    'pointHoverBorderColor'     => "rgba(179,181,198,1)",
+                                    'data'                      => $lastDayCollection->getRoomTemperatureValues(),
+                                ],
+                                [
+                                    'label'                     => \Yii::t('app', 'Outside temperature'),
+                                    'backgroundColor'           => "rgba(255,99,132,0.2)",
+                                    'borderColor'               => "rgba(255,99,132,1)",
+                                    'pointBackgroundColor'      => "rgba(255,99,132,1)",
+                                    'pointBorderColor'          => "#fff",
+                                    'pointHoverBackgroundColor' => "#fff",
+                                    'pointHoverBorderColor'     => "rgba(255,99,132,1)",
+                                    'data'                      => $lastDayCollection->getOutsideTemperatureValues(),
+                                ],
+                            ],
+                        ],
+                    ]);
+                    ?>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-aqua">
-            <span class="info-box-icon">
-                <?= FA::i(FA::_TINT) ?>
-            </span>
-
-            <div class="info-box-content">
-                <span class="info-box-text"><?= \Yii::t('app', 'Outside humidity') ?></span>
-                <span class="info-box-number">
-                    <?= $measurement->outside_humidity ?>
-                    <sup>
-                        %
-                    </sup>
-                </span>
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="chart">
+                    <?= ChartJs::widget([
+                        'type'    => 'line',
+                        'options' => [
+                            'height' => 400,
+                        ],
+                        'data'    => [
+                            'labels'   => $lastDayCollection->getLabels(),
+                            'datasets' => [
+                                [
+                                    'label'                     => \Yii::t('app', 'Room humidity'),
+                                    'backgroundColor'           => "rgba(179,181,198,0.2)",
+                                    'borderColor'               => "rgba(179,181,198,1)",
+                                    'pointBackgroundColor'      => "rgba(179,181,198,1)",
+                                    'pointBorderColor'          => "#fff",
+                                    'pointHoverBackgroundColor' => "#fff",
+                                    'pointHoverBorderColor'     => "rgba(179,181,198,1)",
+                                    'data'                      => $lastDayCollection->getRoomHumidityValues(),
+                                ],
+                                [
+                                    'label'                     => \Yii::t('app', 'Outside humidity'),
+                                    'backgroundColor'           => "rgba(255,99,132,0.2)",
+                                    'borderColor'               => "rgba(255,99,132,1)",
+                                    'pointBackgroundColor'      => "rgba(255,99,132,1)",
+                                    'pointBorderColor'          => "#fff",
+                                    'pointHoverBackgroundColor' => "#fff",
+                                    'pointHoverBorderColor'     => "rgba(255,99,132,1)",
+                                    'data'                      => $lastDayCollection->getOutsideHumidityValues(),
+                                ],
+                            ],
+                        ],
+                    ]);
+                    ?>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-teal">
-            <span class="info-box-icon">
-                <?= FA::i(FA::_TACHOMETER) ?>
-            </span>
-
-            <div class="info-box-content">
-                <span class="info-box-text"><?= \Yii::t('app', 'Room air pressure') ?></span>
-                <span class="info-box-number">
-                    <?= $measurement->room_air_pressure ?>
-                    <sup>
-                        mmHg
-                    </sup>
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-orange">
-            <span class="info-box-icon">
-                <?= FA::i(FA::_LEAF) ?>
-            </span>
-
-            <div class="info-box-content">
-                <span class="info-box-text"><?= \Yii::t('app', 'Outside wind speed') ?></span>
-                <span class="info-box-number">
-                    <?= $measurement->outside_wind_speed ?>
-                    <sup>
-                        km/h
-                    </sup>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-            <span class="info-box-icon bg-blue">
-                <?= FA::i(FA::_THERMOMETER) ?>
-            </span>
-
-            <div class="info-box-content">
-                <span class="info-box-text"><?= \Yii::t('app', 'Room temperature') ?></span>
-                <span class="info-box-number">
-                    <?= $measurement->room_temperature ?>
-                    <sup>
-                        &#8451;
-                    </sup>
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-            <span class="info-box-icon bg-aqua">
-                <?= FA::i(FA::_TINT) ?>
-            </span>
-
-            <div class="info-box-content">
-                <span class="info-box-text"><?= \Yii::t('app', 'Room humidity') ?></span>
-                <span class="info-box-number">
-                    <?= $measurement->room_humidity ?>
-                    <sup>
-                        %
-                    </sup>
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-            <span class="info-box-icon bg-teal">
-                <?= FA::i(FA::_TACHOMETER) ?>
-            </span>
-
-            <div class="info-box-content">
-                <span class="info-box-text"><?= \Yii::t('app', 'Room air pressure') ?></span>
-                <span class="info-box-number">
-                    <?= $measurement->room_air_pressure ?>
-                    <sup>
-                        mmHg
-                    </sup>
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-            <span class="info-box-icon bg-yellow-active">
-                <?= FA::i(FA::_LIGHTBULB_O) ?>
-            </span>
-
-            <div class="info-box-content">
-                <span class="info-box-text"><?= \Yii::t('app', 'Room illuminance') ?></span>
-                <span class="info-box-number">
-                    <?= $measurement->room_lux ?>
-                    <sup>
-                        lux
-                    </sup>
-                </span>
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="chart">
+                    <?= ChartJs::widget([
+                        'type'    => 'line',
+                        'options' => [
+                            'height' => 400,
+                        ],
+                        'data'    => [
+                            'labels'   => $lastDayCollection->getLabels(),
+                            'datasets' => [
+                                [
+                                    'label'                     => \Yii::t('app', 'Room air pressure'),
+                                    'backgroundColor'           => "rgba(179,181,198,0.2)",
+                                    'borderColor'               => "rgba(179,181,198,1)",
+                                    'pointBackgroundColor'      => "rgba(179,181,198,1)",
+                                    'pointBorderColor'          => "#fff",
+                                    'pointHoverBackgroundColor' => "#fff",
+                                    'pointHoverBorderColor'     => "rgba(179,181,198,1)",
+                                    'data'                      => $lastDayCollection->getRoomAirPressureValues(),
+                                ],
+                                [
+                                    'label'                     => \Yii::t('app', 'Outside air pressure'),
+                                    'backgroundColor'           => "rgba(255,99,132,0.2)",
+                                    'borderColor'               => "rgba(255,99,132,1)",
+                                    'pointBackgroundColor'      => "rgba(255,99,132,1)",
+                                    'pointBorderColor'          => "#fff",
+                                    'pointHoverBackgroundColor' => "#fff",
+                                    'pointHoverBorderColor'     => "rgba(255,99,132,1)",
+                                    'data'                      => $lastDayCollection->getOutsideAirPressureValues(),
+                                ],
+                            ],
+                        ],
+                    ]);
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div class="clearfix"></div>

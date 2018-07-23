@@ -7,6 +7,8 @@
 namespace app\controllers;
 
 use app\dictionaries\Role;
+use app\models\Measurement;
+use app\services\ChartsJsService;
 use app\services\MeasurementService;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -54,6 +56,12 @@ class SiteController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->render('index', ['measurement' => MeasurementService::measureOnly()]);
+        return $this->render(
+            'index',
+            [
+                'measurement'       => MeasurementService::measureOnly(),
+                'lastDayCollection' => ChartsJsService::getLastDayMeasurementService(),
+            ]
+        );
     }
 }

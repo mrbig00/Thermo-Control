@@ -6,30 +6,19 @@
 
 namespace app\models\query;
 
-use app\models\Measurement;
+use Carbon\Carbon;
 
 /**
  * This is the ActiveQuery class for [[Measurement]].
- *
- * @see Measurement
  */
 class MeasurementQuery extends \yii\db\ActiveQuery
 {
-    /**
-     * {@inheritdoc}
-     * @return Measurement[]|array
-     */
-    public function all($db = null)
+    public function lastDay()
     {
-        return parent::all($db);
-    }
+        $current = Carbon::now(\Yii::$app->timeZone);
+        $yesterday = (clone $current)->subDay(1);
 
-    /**
-     * {@inheritdoc}
-     * @return Measurement|array|null
-     */
-    public function one($db = null)
-    {
-        return parent::one($db);
+        return $this->orderBy(['created_at' => SORT_ASC])
+            ->andWhere(['between', 'created_at', $yesterday->timestamp, $current->timestamp]);
     }
 }

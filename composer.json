@@ -19,7 +19,9 @@
     "dmstr/yii2-adminlte-asset": "2.6.1",
     "yiisoft/yii2-httpclient": "^2.0@dev",
     "cmfcmf/openweathermap-php-api": "dev-master",
-    "yiisoft/yii2-swiftmailer": "^2.1@dev"
+    "yiisoft/yii2-swiftmailer": "^2.1@dev",
+    "nesbot/carbon": "1.32.0",
+    "2amigos/yii2-chartjs-widget": "2.1.2"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.0.0",
