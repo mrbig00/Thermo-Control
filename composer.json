@@ -50,6 +50,8 @@
       "setPermission": [
         {
           "runtime": "0777",
+          "runtime/console": "0777",
+          "runtime/web": "0777",
           "public/assets": "0777",
           "yii": "0755"
         }
