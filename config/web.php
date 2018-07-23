@@ -51,6 +51,9 @@ $config = [
         'user' => [
             'class'         => Da\User\Module::class,
             'viewPath'      => '@app/views/user',
+            'classMap'      => [
+                'User' => 'app\models\User',
+            ],
             'controllerMap' => [
                 'security'     => 'app\controllers\user\SecurityController',
                 'registration' => 'app\controllers\user\RegistrationController',
