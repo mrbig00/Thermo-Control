@@ -23,27 +23,24 @@ use yii\helpers\Html;
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image"
                                  alt="User Image"/>
-                            <span class="hidden-xs">Alexander Pierce</span>
+                            <span class="hidden-xs"><?= \Yii::$app->user->identity->profile->name; ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
                                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle"
                                      alt="User Image"/>
                                 <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2012</small>
+                                    <?= \Yii::$app->user->identity->profile->name; ?>
+                                    <small>
+                                        <?=
+                                        \Yii::t(
+                                            'app',
+                                            'Member since {date}',
+                                            ['date' => \Yii::$app->formatter->asDate(\Yii::$app->user->identity->created_at)]
+                                        )
+                                        ?>
+                                    </small>
                                 </p>
-                            </li>
-                            <li class="user-body">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
                             </li>
                             <li class="user-footer">
                                 <div class="pull-left">
