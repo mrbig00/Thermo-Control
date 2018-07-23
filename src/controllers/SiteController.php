@@ -1,13 +1,38 @@
 <?php
+/**
+ * @author  Zoltan Szanto <mrbig00@gmail.com>
+ * @since   2018/07/22
+ */
 
 namespace app\controllers;
 
-use app\services\MeasurementService;
+use app\dictionaries\Role;
+use yii\filters\AccessControl;
 use yii\web\Controller;
-use app\models\Measurement;
 
-class SiteController extends Controller
+/**
+ * Class SiteController
+ *
+ * @package app\controllers
+ */
+class SiteController extends BaseController
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class'  => AccessControl::class,
+                'except' => ['error'],
+                'rules'  => [
+                    [
+                        'allow' => true,
+                        'roles' => [Role::ADMIN],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
