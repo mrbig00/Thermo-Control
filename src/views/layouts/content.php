@@ -2,10 +2,14 @@
 /**
  * @author  Zoltan Szanto <mrbig00@gmail.com>
  * @since   2018/07/22
+ *
+ * @var $content string
  */
 
-use yii\widgets\Breadcrumbs;
+use \yii\helpers\Html;
 use dmstr\widgets\Alert;
+use yii\widgets\Breadcrumbs;
+use rmrevin\yii\fontawesome\FA;
 
 ?>
 <div class="content-wrapper">
@@ -16,7 +20,7 @@ use dmstr\widgets\Alert;
             <h1>
                 <?php
                 if ($this->title !== null) {
-                    echo \yii\helpers\Html::encode($this->title);
+                    echo Html::encode($this->title);
                 } else {
                     echo \yii\helpers\Inflector::camel2words(
                         \yii\helpers\Inflector::id2camel($this->context->module->id)
@@ -29,7 +33,12 @@ use dmstr\widgets\Alert;
         <?=
         Breadcrumbs::widget(
             [
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'encodeLabels' => false,
+                'homeLink'     => [
+                    'label' => FA::i(FA::_HOME) . Html::encode(Yii::t('app', 'Home')),
+                    'url'   => Yii::$app->homeUrl,
+                ],
+                'links'        => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]
         ) ?>
     </section>
