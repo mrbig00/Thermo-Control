@@ -36,11 +36,8 @@ dmstr\web\AdminLteAsset::register($this);
     <meta name="theme-color" content="#ffffff">
 </head>
 <body class="login-page">
-
 <?php $this->beginBody() ?>
-
 <?= $content ?>
-
 <?php $this->endBody() ?>
 </body>
 </html>

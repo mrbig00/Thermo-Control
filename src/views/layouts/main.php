@@ -12,7 +12,6 @@ use yii\helpers\Html;
 
 app\assets\AppAsset::register($this);
 dmstr\web\AdminLteAsset::register($this);
-$directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -37,28 +36,13 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
     <meta name="msapplication-config" content="<?= Url::to('/img/favicon/browserconfig.xml?v=Gvk4ajbyL5') ?>">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-purple sidebar-mini">
 <?php $this->beginBody() ?>
 <div class="wrapper">
-
-    <?= $this->render(
-        'header.php',
-        ['directoryAsset' => $directoryAsset]
-    ) ?>
-
-    <?= $this->render(
-        'left.php',
-        ['directoryAsset' => $directoryAsset]
-    )
-    ?>
-
-    <?= $this->render(
-        'content.php',
-        ['content' => $content, 'directoryAsset' => $directoryAsset]
-    ) ?>
-
+    <?= $this->render('header.php') ?>
+    <?= $this->render('left.php')?>
+    <?= $this->render('content.php', ['content' => $content]) ?>
 </div>
-
 <?php $this->endBody() ?>
 </body>
 </html>
