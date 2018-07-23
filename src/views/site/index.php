@@ -17,26 +17,43 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= $this->render('_room', ['measurement' => $measurement]); ?>
 
 <div class="row" style="height: 200px">
-    <div class="col-xs-12">
+    <div class="col-md-4 col-xs-12">
         <div class="box box-primary">
             <div class="box-body">
                 <div class="chart">
                     <?= ChartJs::widget([
-                        'type'    => 'line',
-                        'options' => [
+                        'type'          => 'line',
+                        'options'       => [
                             'height' => 400,
                         ],
-                        'data'    => [
+                        'clientOptions' => [
+                            'scales'   => [
+                                'xAxes' => [
+                                    'display' => true,
+                                    'type'    => 'logarithmic',
+                                ],
+                            ],
+                            'tooltips' => [
+                                'mode'      => 'index',
+                                'intersect' => false,
+                            ],
+                            'hover'    => [
+                                'mode'      => 'nearest',
+                                'intersect' => true,
+                            ],
+                        ],
+                        'data'          => [
                             'labels'   => $lastDayCollection->getLabels(),
                             'datasets' => [
+                                // Temperature
                                 [
                                     'label'                     => \Yii::t('app', 'Room temperature'),
-                                    'backgroundColor'           => "rgba(179,181,198,0.2)",
-                                    'borderColor'               => "rgba(179,181,198,1)",
-                                    'pointBackgroundColor'      => "rgba(179,181,198,1)",
+                                    'backgroundColor'           => "rgba(255, 133, 27,0.2)",
+                                    'borderColor'               => "rgba(255, 133, 27,1)",
+                                    'pointBackgroundColor'      => "rgba(255, 133, 27,1)",
                                     'pointBorderColor'          => "#fff",
                                     'pointHoverBackgroundColor' => "#fff",
-                                    'pointHoverBorderColor'     => "rgba(179,181,198,1)",
+                                    'pointHoverBorderColor'     => "rgba(255, 133, 27,1)",
                                     'data'                      => $lastDayCollection->getRoomTemperatureValues(),
                                 ],
                                 [
@@ -49,44 +66,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'pointHoverBorderColor'     => "rgba(255,99,132,1)",
                                     'data'                      => $lastDayCollection->getOutsideTemperatureValues(),
                                 ],
-                            ],
-                        ],
-                    ]);
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12">
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="chart">
-                    <?= ChartJs::widget([
-                        'type'    => 'line',
-                        'options' => [
-                            'height' => 400,
-                        ],
-                        'data'    => [
-                            'labels'   => $lastDayCollection->getLabels(),
-                            'datasets' => [
+                                // Humidity
                                 [
                                     'label'                     => \Yii::t('app', 'Room humidity'),
-                                    'backgroundColor'           => "rgba(179,181,198,0.2)",
-                                    'borderColor'               => "rgba(179,181,198,1)",
-                                    'pointBackgroundColor'      => "rgba(179,181,198,1)",
+                                    'backgroundColor'           => "rgba(62, 149, 205,0.2)",
+                                    'borderColor'               => "rgba(62, 149, 205,1)",
+                                    'pointBackgroundColor'      => "rgba(62, 149, 205,1)",
                                     'pointBorderColor'          => "#fff",
                                     'pointHoverBackgroundColor' => "#fff",
-                                    'pointHoverBorderColor'     => "rgba(179,181,198,1)",
+                                    'pointHoverBorderColor'     => "rgba(62, 149, 205,1)",
                                     'data'                      => $lastDayCollection->getRoomHumidityValues(),
                                 ],
                                 [
                                     'label'                     => \Yii::t('app', 'Outside humidity'),
-                                    'backgroundColor'           => "rgba(255,99,132,0.2)",
-                                    'borderColor'               => "rgba(255,99,132,1)",
-                                    'pointBackgroundColor'      => "rgba(255,99,132,1)",
+                                    'backgroundColor'           => "rgba(142, 94, 162,0.2)",
+                                    'borderColor'               => "rgba(142, 94, 162,1)",
+                                    'pointBackgroundColor'      => "rgba(142, 94, 162,1)",
                                     'pointBorderColor'          => "#fff",
                                     'pointHoverBackgroundColor' => "#fff",
-                                    'pointHoverBorderColor'     => "rgba(255,99,132,1)",
+                                    'pointHoverBorderColor'     => "rgba(142, 94, 162,1)",
                                     'data'                      => $lastDayCollection->getOutsideHumidityValues(),
                                 ],
                             ],
@@ -97,37 +95,102 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
-    <div class="col-xs-12">
+    <div class="col-md-4 col-xs-12">
         <div class="box box-primary">
             <div class="box-body">
                 <div class="chart">
                     <?= ChartJs::widget([
-                        'type'    => 'line',
-                        'options' => [
+                        'type'          => 'line',
+                        'options'       => [
                             'height' => 400,
                         ],
-                        'data'    => [
+                        'clientOptions' => [
+                            'scales'   => [
+                                'xAxes' => [
+                                    'display' => true,
+                                    'type'    => 'logarithmic',
+                                ],
+                            ],
+                            'tooltips' => [
+                                'mode'      => 'index',
+                                'intersect' => false,
+                            ],
+                            'hover'    => [
+                                'mode'      => 'nearest',
+                                'intersect' => true,
+                            ],
+                        ],
+                        'data'          => [
                             'labels'   => $lastDayCollection->getLabels(),
                             'datasets' => [
+                                // Air pressure
                                 [
                                     'label'                     => \Yii::t('app', 'Room air pressure'),
-                                    'backgroundColor'           => "rgba(179,181,198,0.2)",
-                                    'borderColor'               => "rgba(179,181,198,1)",
-                                    'pointBackgroundColor'      => "rgba(179,181,198,1)",
+                                    'backgroundColor'           => "rgba(60, 186, 159,0.2)",
+                                    'borderColor'               => "rgba(60, 186, 159,1)",
+                                    'pointBackgroundColor'      => "rgba(60, 186, 159,1)",
                                     'pointBorderColor'          => "#fff",
                                     'pointHoverBackgroundColor' => "#fff",
-                                    'pointHoverBorderColor'     => "rgba(179,181,198,1)",
+                                    'pointHoverBorderColor'     => "rgba(60, 186, 159,1)",
                                     'data'                      => $lastDayCollection->getRoomAirPressureValues(),
                                 ],
                                 [
                                     'label'                     => \Yii::t('app', 'Outside air pressure'),
-                                    'backgroundColor'           => "rgba(255,99,132,0.2)",
-                                    'borderColor'               => "rgba(255,99,132,1)",
-                                    'pointBackgroundColor'      => "rgba(255,99,132,1)",
+                                    'backgroundColor'           => "rgba(196, 88, 80,0.2)",
+                                    'borderColor'               => "rgba(196, 88, 80,1)",
+                                    'pointBackgroundColor'      => "rgba(196, 88, 80,1)",
                                     'pointBorderColor'          => "#fff",
                                     'pointHoverBackgroundColor' => "#fff",
-                                    'pointHoverBorderColor'     => "rgba(255,99,132,1)",
+                                    'pointHoverBorderColor'     => "rgba(196, 88, 80,1)",
                                     'data'                      => $lastDayCollection->getOutsideAirPressureValues(),
+                                    'hidden'                    => true,
+                                ],
+                            ],
+                        ],
+                    ]);
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="chart">
+                    <?= ChartJs::widget([
+                        'type'          => 'line',
+                        'options'       => [
+                            'height' => 400,
+                        ],
+                        'clientOptions' => [
+                            'scales'   => [
+                                'xAxes' => [
+                                    'display' => true,
+                                    'type'    => 'logarithmic',
+                                ],
+                            ],
+                            'tooltips' => [
+                                'mode'      => 'index',
+                                'intersect' => false,
+                            ],
+                            'hover'    => [
+                                'mode'      => 'nearest',
+                                'intersect' => true,
+                            ],
+                        ],
+                        'data'          => [
+                            'labels'   => $lastDayCollection->getLabels(),
+                            'datasets' => [
+                                // Air pressure
+                                [
+                                    'label'                     => \Yii::t('app', 'Room illuminance'),
+                                    'backgroundColor'           => "rgba(255,171,0,0.4)",
+                                    'borderColor'               => "rgba(255,171,0,1)",
+                                    'pointBackgroundColor'      => "rgba(255,171,0,1)",
+                                    'pointBorderColor'          => "#fff",
+                                    'pointHoverBackgroundColor' => "#fff",
+                                    'pointHoverBorderColor'     => "rgba(255,171,0,1)",
+                                    'data'                      => $lastDayCollection->getRoomIlluminanceValues(),
                                 ],
                             ],
                         ],

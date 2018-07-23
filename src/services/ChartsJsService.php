@@ -71,4 +71,9 @@ class ChartsJsService extends BaseObject
         return ArrayHelper::getColumn($this->measurements, 'outside_air_pressure');
     }
 
+    public function getRoomIlluminanceValues()
+    {
+        return ArrayHelper::getColumn($this->measurements, 'room_lux');
+    }
+
 }
