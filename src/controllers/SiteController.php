@@ -28,9 +28,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $measurementService = new MeasurementService();
-        $measurementService->measure();
-        $measurementService->store();
         return $this->render('index');
     }
 }
