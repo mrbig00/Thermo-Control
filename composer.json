@@ -24,7 +24,8 @@
   "require-dev": {
     "yiisoft/yii2-debug": "~2.0.0",
     "yiisoft/yii2-gii": "~2.0.0",
-    "yiisoft/yii2-faker": "~2.0.0"
+    "yiisoft/yii2-faker": "~2.0.0",
+    "bazilio/yii2-stubs-generator": "dev-master"
   },
   "config": {
     "process-timeout": 1800,
@@ -39,6 +40,9 @@
     "post-create-project-cmd": [
       "yii\\composer\\Installer::postCreateProject",
       "yii\\composer\\Installer::postInstall"
+    ],
+    "post-update-cmd": [
+      "bin/yii stubs config/console.php config/web.php"
     ]
   },
   "extra": {

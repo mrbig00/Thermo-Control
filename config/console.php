@@ -22,6 +22,9 @@ $config = [
                 'app\migrations\demo',
             ],
         ],
+        'stubs'   => [
+            'class' => 'bazilio\stubsgenerator\StubsController',
+        ],
     ],
     'aliases'             => [
         '@bower' => '@vendor/bower-asset',

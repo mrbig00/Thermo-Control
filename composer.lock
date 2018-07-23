@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c334b90e3156b5e5225484cbddf71bcb",
+    "content-hash": "6134736fd6fe062b7a4b142d0e0b8235",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -1470,6 +1470,48 @@
     ],
     "packages-dev": [
         {
+            "name": "bazilio/yii2-stubs-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bazilio91/yii2-stubs-generator.git",
+                "reference": "f45d0e96396834692a18724c497c3be4f280f74a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bazilio91/yii2-stubs-generator/zipball/f45d0e96396834692a18724c497c3be4f280f74a",
+                "reference": "f45d0e96396834692a18724c497c3be4f280f74a",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bazilio\\stubsgenerator\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vasily Ostanin",
+                    "email": "bazilio91@gmail.com"
+                }
+            ],
+            "description": "Yii2 component stubs generator for Yii::$app",
+            "keywords": [
+                "autocomplete",
+                "phpstorm",
+                "stubs",
+                "yii2"
+            ],
+            "time": "2018-03-28T07:19:46+00:00"
+        },
+        {
             "name": "bower-asset/typeahead.js",
             "version": "v0.11.1",
             "source": {
@@ -1725,7 +1767,8 @@
     "stability-flags": {
         "yiisoft/yii2-httpclient": 20,
         "cmfcmf/openweathermap-php-api": 20,
-        "yiisoft/yii2-swiftmailer": 20
+        "yiisoft/yii2-swiftmailer": 20,
+        "bazilio/yii2-stubs-generator": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
