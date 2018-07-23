@@ -19,6 +19,7 @@ $config = [
             'migrationNamespaces' => [
                 'Da\User\Migration',
                 'app\migrations',
+                'app\migrations\demo',
             ],
         ],
     ],
@@ -42,6 +43,10 @@ $config = [
             ],
         ],
         'db'          => $db,
+        'mailer'      => [
+            'class'            => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => true,
+        ],
     ],
     'params'              => $params,
     'modules'             => [
