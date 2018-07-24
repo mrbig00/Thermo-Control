@@ -14,7 +14,11 @@ use Da\User\Factory\MailFactory;
 use Da\User\Service\UserCreateService;
 use Da\User\Traits\ContainerAwareTrait;
 
-
+/**
+ * Create users with different roles
+ *
+ * @package app\factories
+ */
 class UserFactory
 {
     use ContainerAwareTrait;
@@ -38,7 +42,7 @@ class UserFactory
             $profile = new Profile();
             $profile->user_id = $user->id;
         }
-
+        $profile->gravatar_email = $user->email;
         $profile->public_email = $user->email;
         $profile->name = $name;
         $profile->timezone = ($timezone) ? $timezone : 'Europe/Bucharest';
