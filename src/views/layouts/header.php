@@ -21,13 +21,13 @@ use yii\helpers\Html;
                 <?php if (!\Yii::$app->user->isGuest): ?>
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?= \Yii::$app->user->identity->getAvatarUrl() ?>" class="user-image"
+                            <img src="<?= \Yii::$app->user->identity->profile->getAvatarUrl() ?>" class="user-image"
                                  alt="User Image"/>
                             <span class="hidden-xs"><?= \Yii::$app->user->identity->profile->name; ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
-                                <img src="<?= \Yii::$app->user->identity->getAvatarUrl() ?>" class="img-circle"
+                                <img src="<?= \Yii::$app->user->identity->profile->getAvatarUrl() ?>" class="img-circle"
                                      alt="User Image"/>
                                 <p>
                                     <?= \Yii::$app->user->identity->profile->name; ?>
@@ -44,7 +44,9 @@ use yii\helpers\Html;
                             </li>
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="<?= \yii\helpers\Url::to(['/user/settings'])?>" class="btn btn-default btn-flat">
+                                        Profile
+                                    </a>
                                 </div>
                                 <div class="pull-right">
                                     <?= Html::a(

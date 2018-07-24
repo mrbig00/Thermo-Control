@@ -12,10 +12,10 @@
         <?php if (!\Yii::$app->user->isGuest): ?>
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?= \Yii::$app->user->identity->getAvatarUrl() ?>" class="img-circle" alt="User Image"/>
+                    <img src="<?= \Yii::$app->user->identity->profile->getAvatarUrl() ?>" class="img-circle" alt="User Image"/>
                 </div>
                 <div class="pull-left info">
-                    <p><?= \Yii::$app->user->identity->email ?></p>
+                    <p><?= \Yii::$app->user->identity->profile->name ?></p>
 
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
