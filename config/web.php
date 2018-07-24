@@ -47,13 +47,20 @@ $config = [
             'class'            => 'yii\swiftmailer\Mailer',
             'useFileTransport' => true,
         ],
+        'view'         => [
+            'theme' => [
+                'pathMap' => [
+                    '@Da/User/resources/views' => '@app/views/user',
+                ],
+            ],
+        ],
     ],
     'modules'     => [
         'user' => [
             'class'         => Da\User\Module::class,
             'viewPath'      => '@app/views/user',
             'classMap'      => [
-                'User' => 'app\models\User',
+                'User'      => 'app\models\User',
             ],
             'controllerMap' => [
                 'security'     => 'app\controllers\user\SecurityController',

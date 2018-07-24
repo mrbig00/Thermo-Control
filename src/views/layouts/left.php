@@ -17,11 +17,14 @@
                 <div class="pull-left info">
                     <p><?= \Yii::$app->user->identity->profile->name ?></p>
 
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    <a href="#">
+                        <i class="fas fa-circle text-success"></i>
+                        Online
+                    </a>
                 </div>
             </div>
         <?php endif; ?>
-        <?= dmstr\widgets\Menu::widget(
+        <?= \app\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
                 'items'   => [
@@ -32,7 +35,5 @@
                 ],
             ]
         ) ?>
-
     </section>
-
 </aside>

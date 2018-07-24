@@ -7,13 +7,13 @@
  * @var $measurement \app\models\Measurement
  */
 
-use rmrevin\yii\fontawesome\FA;
+use rmrevin\yii\fontawesome\FAS as FA;
 ?>
 <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-blue">
-                <?= FA::i(FA::_THERMOMETER) ?>
+                <?= FA::i(FA::_TACHOMETER_ALT) ?>
             </span>
 
             <div class="info-box-content">
@@ -49,7 +49,7 @@ use rmrevin\yii\fontawesome\FA;
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-teal">
-                <?= FA::i(FA::_TACHOMETER) ?>
+                <?= FA::i(FA::_TACHOMETER_ALT) ?>
             </span>
 
             <div class="info-box-content">
@@ -67,7 +67,7 @@ use rmrevin\yii\fontawesome\FA;
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-yellow-active">
-                <?= FA::i(FA::_LIGHTBULB_O) ?>
+                <?= FA::i(FA::_LIGHTBULB) ?>
             </span>
 
             <div class="info-box-content">

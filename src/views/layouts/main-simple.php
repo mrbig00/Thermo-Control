@@ -10,7 +10,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-dmstr\web\AdminLteAsset::register($this);
+\app\assets\AdminLteAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -39,6 +39,9 @@ dmstr\web\AdminLteAsset::register($this);
 <?php $this->beginBody() ?>
 <?= $content ?>
 <?php $this->endBody() ?>
+<script>
+    $.material.init();
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>

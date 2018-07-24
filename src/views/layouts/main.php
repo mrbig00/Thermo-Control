@@ -11,7 +11,6 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 app\assets\AppAsset::register($this);
-dmstr\web\AdminLteAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -30,7 +29,7 @@ dmstr\web\AdminLteAsset::register($this);
           href="<?= Url::to('/img/favicon/favicon-16x16.png?v=Gvk4ajbyL5') ?>">
     <link rel="manifest" href="<?= Url::to('/img/favicon/site.webmanifest?v=Gvk4ajbyL5') ?>">
     <link rel="mask-icon" href="<?= Url::to('/img/favicon/safari-pinned-tab.svg?v=Gvk4ajbyL5') ?>" color="#5bbad5">
-    <link rel="shortcut icon" href="<?= Url::to('') ?>/img/favicon/favicon.ico?v=Gvk4ajbyL5">
+    <link rel="shortcut icon" href="<?= Url::to('/img/favicon/favicon.ico?v=Gvk4ajbyL5') ?>">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-TileImage" content="<?= Url::to('/img/favicon/mstile-144x144.png?v=Gvk4ajbyL5') ?>">
     <meta name="msapplication-config" content="<?= Url::to('/img/favicon/browserconfig.xml?v=Gvk4ajbyL5') ?>">
@@ -44,6 +43,9 @@ dmstr\web\AdminLteAsset::register($this);
     <?= $this->render('content.php', ['content' => $content]) ?>
 </div>
 <?php $this->endBody() ?>
+<script>
+    $.material.init();
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>

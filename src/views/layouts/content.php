@@ -7,9 +7,9 @@
  */
 
 use \yii\helpers\Html;
-use dmstr\widgets\Alert;
+use app\widgets\Alert;
 use yii\widgets\Breadcrumbs;
-use rmrevin\yii\fontawesome\FA;
+use rmrevin\yii\fontawesome\FAS as FA;
 
 ?>
 <div class="content-wrapper">

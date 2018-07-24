@@ -14,6 +14,7 @@ use yii\helpers\Html;
     <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <?= \rmrevin\yii\fontawesome\FAS::i(\rmrevin\yii\fontawesome\FAS::_BARS) ?>
             <span class="sr-only">Toggle navigation</span>
         </a>
         <div class="navbar-custom-menu">
@@ -44,15 +45,17 @@ use yii\helpers\Html;
                             </li>
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="<?= \yii\helpers\Url::to(['/user/settings'])?>" class="btn btn-default btn-flat">
-                                        Profile
-                                    </a>
+                                    <?= Html::a(
+                                        'Profile',
+                                        ['/user/settings'],
+                                        ['class' => 'btn bg-green']
+                                    ) ?>
                                 </div>
                                 <div class="pull-right">
                                     <?= Html::a(
                                         'Sign out',
                                         ['/user/logout'],
-                                        ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                                        ['data-method' => 'post', 'class' => 'btn bg-red']
                                     ) ?>
                                 </div>
                             </li>
