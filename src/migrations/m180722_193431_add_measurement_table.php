@@ -2,8 +2,6 @@
 /**
  * @author  Zoltan Szanto <mrbig00@gmail.com>
  * @since   2018/07/22
- *
- * @var $this yii\web\View
  */
 
 namespace app\migrations;
