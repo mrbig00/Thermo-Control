@@ -3,19 +3,66 @@
  * @author  Zoltan Szanto <mrbig00@gmail.com>
  * @since   2018/07/22
  *
-     * @var $this               yii\web\View
+ * @var $this               yii\web\View
  * @var $measurement        \app\models\Measurement
  * @var $lastDayCollection  \app\services\ChartsJsService
+ * @var $sunrise            \Carbon\Carbon
+ * @var $sunset             \Carbon\Carbon
+ * @var $day_length         integer
+ * @var $forecast           F
  */
 
 use dosamigos\chartjs\ChartJs;
+use rmrevin\yii\fontawesome\FAS as FA;
 
 $this->title = \Yii::t('app', 'Dashboard');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="row">
+    <div class="col-md-4 col-xs-12">
+        <div class="info-box bg-orange disabled">
+            <span class="info-box-icon">
+                 <?= FA::i(FA::_SUN) ?>
+            </span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">
+                    <?= \Yii::t('app', 'Sunrise'); ?>
+                </span>
+                <span class="info-box-number">
+                    <?= \Yii::$app->formatter->asRelativeTime($sunrise->timestamp) ?>
+                </span>
+                <span class="progress-description">
+                    <?= \Yii::$app->formatter->asTime($sunrise->timestamp, 'short') ?>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div class="info-box bg-navy-active">
+            <span class="info-box-icon">
+                 <?= FA::i(FA::_MOON) ?>
+            </span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">
+                    <?= \Yii::t('app', 'Sunset'); ?>
+                </span>
+                <span class="info-box-number">
+                    <?= \Yii::$app->formatter->asRelativeTime($sunset->timestamp) ?>
+                </span>
+                <span class="progress-description">
+                  <?= \Yii::$app->formatter->asTime($sunset->timestamp) ?>
+                  </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <?= \app\widgets\ForecastWidget::widget(['forecast' => $forecast]) ?>
+    </div>
+</div>
 <?= $this->render('_outside', ['measurement' => $measurement]); ?>
 <?= $this->render('_room', ['measurement' => $measurement]); ?>
-
 <div class="row" style="height: 200px">
     <div class="col-md-6 col-xs-12">
         <div class="box box-primary">

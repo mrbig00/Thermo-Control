@@ -22,7 +22,8 @@
     "nesbot/carbon": "1.32.0",
     "2amigos/yii2-chartjs-widget": "2.1.2",
     "mrbig00/adminlte": "dev-master",
-    "rmrevin/yii2-fontawesome": "~3.1"
+    "rmrevin/yii2-fontawesome": "~3.1",
+    "vertigolabs/overcast": "dev-master"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.0.0",

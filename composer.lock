@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9aaad7133f1e098b28d62c55a651cf58",
+    "content-hash": "fdefef15f0246fe062bdfb0edb6188ab",
     "packages": [
         {
             "name": "2amigos/yii2-chartjs-widget",
@@ -1058,12 +1058,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "1968042356adcb80a3ba923e35185073f89b057e"
+                "reference": "ddc77827723abf4f8155f876e062013f31b8d6b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/1968042356adcb80a3ba923e35185073f89b057e",
-                "reference": "1968042356adcb80a3ba923e35185073f89b057e",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/ddc77827723abf4f8155f876e062013f31b8d6b5",
+                "reference": "ddc77827723abf4f8155f876e062013f31b8d6b5",
                 "shasum": ""
             },
             "require": {
@@ -1119,7 +1119,43 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-23T08:20:32+00:00"
+            "time": "2018-07-26T11:25:51+00:00"
+        },
+        {
+            "name": "vertigolabs/overcast",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaimz22/Overcast.git",
+                "reference": "f595f8876bf2b23965e2fb9104e019216bfda858"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaimz22/Overcast/zipball/f595f8876bf2b23965e2fb9104e019216bfda858",
+                "reference": "f595f8876bf2b23965e2fb9104e019216bfda858",
+                "shasum": ""
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "Allows for better handling of http connections to Dark Sky webservice"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "VertigoLabs\\Overcast\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Murray",
+                    "email": "jaimz@vertigolabs.org"
+                }
+            ],
+            "description": "An easy to use wrapper for the Dark Sky API (formerly Forecast.io)",
+            "time": "2017-03-28T12:29:33+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -1885,6 +1921,7 @@
         "cmfcmf/openweathermap-php-api": 20,
         "yiisoft/yii2-swiftmailer": 20,
         "mrbig00/adminlte": 20,
+        "vertigolabs/overcast": 20,
         "bazilio/yii2-stubs-generator": 20
     },
     "prefer-stable": false,
