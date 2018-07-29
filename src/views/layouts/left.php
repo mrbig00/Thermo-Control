@@ -10,14 +10,20 @@
 <aside class="main-sidebar">
     <section class="sidebar">
         <?php if (!\Yii::$app->user->isGuest): ?>
+            <?php $accountUrl = \yii\helpers\Url::to(['/user/settings/profile']); ?>
             <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="<?= \Yii::$app->user->identity->profile->getAvatarUrl() ?>" class="img-circle" alt="User Image"/>
-                </div>
+                <a class="pull-left image" href="<?= $accountUrl ?>" title="<?= \Yii::t('app', 'My profile'); ?>">
+                    <img src="<?= \Yii::$app->user->identity->profile->getAvatarUrl() ?>" class="img-circle"
+                         alt="User Image"/>
+                </a>
                 <div class="pull-left info">
-                    <p><?= \Yii::$app->user->identity->profile->name ?></p>
+                    <p>
+                        <a href="<?= $accountUrl ?>" title="<?= \Yii::t('app', 'My profile'); ?>">
+                            <?= \Yii::$app->user->identity->profile->name ?>
+                        </a>
+                    </p>
 
-                    <a href="#">
+                    <a href="<?= $accountUrl ?>" title="<?= \Yii::t('app', 'My profile'); ?>">
                         <i class="fas fa-circle text-success"></i>
                         Online
                     </a>

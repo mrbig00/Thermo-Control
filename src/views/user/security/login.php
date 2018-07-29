@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ->passwordInput()
             ->label(false) ?>
         <div class="row">
-            <div class="col-xs-7">
+            <div class="col-xs-12">
                 <div class="checkbox">
                     <?= $form->field(
                         $model,
@@ -82,12 +82,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'tag' => false,
                             ],
                         ]
-                    )->checkbox(['tabindex' => '4'])->label('My superb label') ?>
+                    )->checkbox(['tabindex' => '4'])->label(false) ?>
                 </div>
             </div>
 
 
-            <div class="col-xs-5">
+            <div class="col-xs-12">
                 <?= Html::submitButton(
                     Yii::t('usuario', 'Sign in'),
                     ['class' => 'btn bg-purple btn-block', 'tabindex' => '3']
