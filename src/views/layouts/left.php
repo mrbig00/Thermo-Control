@@ -30,13 +30,15 @@
                 </div>
             </div>
         <?php endif; ?>
+        <?php \app\widgets\Menu::$iconClassPrefix = 'fas fa-'; ?>
         <?= \app\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
                 'items'   => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
+                    ['label' => 'Navigation', 'options' => ['class' => 'header']],
+                    ['label' => 'Home', 'icon' => 'tachometer-alt', 'url' => \yii\helpers\Url::home()],
+                    ['label' => 'Debug', 'icon' => 'wrench', 'url' => ['/debug']],
+                    ['label' => 'Users', 'icon' => 'users', 'url' => ['/user/admin/index']],
                     ['label' => 'Login', 'url' => ['user/login'], 'visible' => Yii::$app->user->isGuest],
                 ],
             ]
