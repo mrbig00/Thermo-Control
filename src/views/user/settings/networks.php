@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         Yii::t('usuario', 'Connect'),
                                         $auth->createClientUrl($client),
                                         [
-                                            'class' => 'btn btn-success btn-block',
+                                            'class' => 'btn bg-green btn-block',
                                         ]
                                     )
                                 ?>

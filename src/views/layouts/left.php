@@ -38,7 +38,12 @@
                     ['label' => 'Navigation', 'options' => ['class' => 'header']],
                     ['label' => 'Home', 'icon' => 'tachometer-alt', 'url' => \yii\helpers\Url::home()],
                     ['label' => 'Debug', 'icon' => 'wrench', 'url' => ['/debug']],
-                    ['label' => 'Users', 'icon' => 'users', 'url' => ['/user/admin/index']],
+                    [
+                        'label'   => 'Users',
+                        'icon'    => 'users',
+                        'url'     => ['/user/admin/index'],
+                        'visible' => \Yii::$app->user->can(\app\dictionaries\Role::ADMIN),
+                    ],
                     ['label' => 'Login', 'url' => ['user/login'], 'visible' => Yii::$app->user->isGuest],
                 ],
             ]

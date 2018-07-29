@@ -102,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <div class="col-lg-offset-3 col-lg-9">
                                         <?= Html::submitButton(
                                             Yii::t('usuario', 'Save'),
-                                            ['class' => 'btn btn-block btn-success']
+                                            ['class' => 'btn btn-block bg-green']
                                         ) ?>
                                     </div>
                                 </div>

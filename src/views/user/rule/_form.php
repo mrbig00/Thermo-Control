@@ -22,6 +22,6 @@ use yii\widgets\ActiveForm;
 
 <?= $form->field($model, 'className') ?>
 
-<?= Html::submitButton(Yii::t('usuario', 'Save'), ['class' => 'btn btn-success btn-block']) ?>
+<?= Html::submitButton(Yii::t('usuario', 'Save'), ['class' => 'btn bg-green btn-block']) ?>
 
 <?php ActiveForm::end() ?>

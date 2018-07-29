@@ -66,6 +66,7 @@ $config = [
                 'security'     => 'app\controllers\user\SecurityController',
                 'registration' => 'app\controllers\user\RegistrationController',
             ],
+            'administratorPermissionName' => \app\dictionaries\Role::ADMIN
         ],
     ],
     'params'      => $params,

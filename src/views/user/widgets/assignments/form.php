@@ -55,6 +55,6 @@ use yii\widgets\ActiveForm;
     ]
 ) ?>
 
-<?= Html::submitButton(Yii::t('usuario', 'Update assignments'), ['class' => 'btn btn-success btn-block']) ?>
+<?= Html::submitButton(Yii::t('usuario', 'Update assignments'), ['class' => 'btn bg-green btn-block']) ?>
 
 <?php ActiveForm::end() ?>
