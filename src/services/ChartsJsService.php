@@ -51,6 +51,11 @@ class ChartsJsService extends BaseObject
         return ArrayHelper::getColumn($this->measurements, 'outside_temperature');
     }
 
+    public function getCpuTemperatureValues()
+    {
+        return ArrayHelper::getColumn($this->measurements, 'cpu_temperature');
+    }
+
     public function getRoomHumidityValues()
     {
         return ArrayHelper::getColumn($this->measurements, 'room_humidity');

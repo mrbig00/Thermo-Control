@@ -14,6 +14,7 @@ use Yii;
  * @property double $room_lux
  * @property double $room_humidity
  * @property double $outside_temperature
+ * @property double $cpu_temperature
  * @property double $outside_air_pressure
  * @property double $outside_humidity
  * @property double $outside_wind_speed
@@ -41,8 +42,8 @@ class Measurement extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['room_temperature', 'room_air_pressure', 'room_lux', 'room_humidity', 'outside_temperature', 'outside_air_pressure', 'outside_humidity', 'outside_wind_speed'], 'required'],
-            [['room_temperature', 'room_air_pressure', 'room_lux', 'room_humidity', 'outside_temperature', 'outside_air_pressure', 'outside_humidity', 'outside_wind_speed'], 'number'],
+            [['room_temperature', 'room_air_pressure', 'room_lux', 'room_humidity', 'outside_temperature', 'outside_air_pressure', 'outside_humidity', 'outside_wind_speed', 'cpu_temperature'], 'required'],
+            [['room_temperature', 'room_air_pressure', 'room_lux', 'room_humidity', 'outside_temperature', 'outside_air_pressure', 'outside_humidity', 'outside_wind_speed', 'cpu_temperature'], 'number'],
             [['created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
             [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['updated_by' => 'id']],
@@ -68,6 +69,7 @@ class Measurement extends \yii\db\ActiveRecord
             'updated_at'           => Yii::t('app', 'Updated At'),
             'created_by'           => Yii::t('app', 'Created By'),
             'updated_by'           => Yii::t('app', 'Updated By'),
+            'cpu_temperature'      => Yii::t('app', 'CPU Temperature'),
         ];
     }
 }

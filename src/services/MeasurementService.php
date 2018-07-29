@@ -139,6 +139,7 @@ class MeasurementService extends BaseObject
                         'room_air_pressure' => $response->data['pressure'],
                         'room_temperature'  => $response->data['temperature'],
                         'room_humidity'     => $response->data['humidity'],
+                        'cpu_temperature'   => $response->data['cpu_temp'],
                     ];
                 } else {
                     throw new \Exception("Error during getting room data");

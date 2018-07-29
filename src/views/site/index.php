@@ -57,6 +57,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'data'                      => $lastDayCollection->getRoomTemperatureValues(),
                                 ],
                                 [
+                                    'label'                     => \Yii::t('app', 'CPU temperature'),
+                                    'backgroundColor'           => "rgba(255, 133, 27,0.2)",
+                                    'borderColor'               => "rgba(255, 133, 27,1)",
+                                    'pointBackgroundColor'      => "rgba(255, 133, 27,1)",
+                                    'pointBorderColor'          => "#fff",
+                                    'pointHoverBackgroundColor' => "#fff",
+                                    'pointHoverBorderColor'     => "rgba(255, 133, 27,1)",
+                                    'data'                      => $lastDayCollection->getCpuTemperatureValues(),
+                                ],
+                                [
                                     'label'                     => \Yii::t('app', 'Outside temperature'),
                                     'backgroundColor'           => "rgba(255,99,132,0.2)",
                                     'borderColor'               => "rgba(255,99,132,1)",
