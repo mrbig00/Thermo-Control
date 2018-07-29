@@ -80,7 +80,7 @@ $timezoneHelper = $model->make(TimezoneHelper::class);
 
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-9">
-                        <?= Html::submitButton(Yii::t('usuario', 'Save'), ['class' => 'btn btn-block btn-success']) ?>
+                        <?= Html::submitButton(Yii::t('usuario', 'Save'), ['class' => 'btn btn-block bg-green']) ?>
                         <br>
                     </div>
                 </div>
