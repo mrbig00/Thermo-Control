@@ -36,7 +36,7 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
                 'items'   => [
                     ['label' => 'Navigation', 'options' => ['class' => 'header']],
-                    ['label' => 'Home', 'icon' => 'tachometer-alt', 'url' => \yii\helpers\Url::home()],
+                    ['label' => 'Home', 'icon' => 'tachometer-alt', 'url' => ['/site/index']],
                     ['label' => 'Debug', 'icon' => 'wrench', 'url' => ['/debug']],
                     [
                         'label'   => 'Users',
