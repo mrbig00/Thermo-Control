@@ -109,8 +109,7 @@ class SiteController extends BaseController
 
                 return $result;
             },
-            3600,
-            date('Y-m-d')
+            3600
         );
 
         return $data;
@@ -133,8 +132,7 @@ class SiteController extends BaseController
                 );
                 return $forecast->getHourly();
             },
-            3600,
-            date('Y-m-d')
+            3600
         );
 
         return $data;
