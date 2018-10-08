@@ -47,7 +47,14 @@
     ],
     "post-update-cmd": [
       "bin/yii stubs config/console.php config/web.php"
-    ]
+    ],
+    "post-update-cmd": [
+      "@copy-env-file"
+    ],
+    "copy-env-file": [
+      "cp -n template.env .env",
+      "echo 'Do not forget to fill out the .env file'"
+    ],
   },
   "extra": {
     "yii\\composer\\Installer::postCreateProject": {
